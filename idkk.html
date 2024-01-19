@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️</title>
+
+    <style>
+        /* CSS Styles */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .flashcard {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 1050px;
+            height: 860px;
+            background-image: url('hart.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .question {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #300912;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="content">
+        <div class="flashcard" id="flashcard" onclick="generateRandomQuestion()">
+            <div class="question" id="question"> click to play </div>
+        </div>
+    </div>
+
+    <script>
+        var questions = [
+            "What's the most unexpected compliment you've ever received, and how did it make you feel?",
+            "If you could create a personal motto or slogan, what would it be and why?",
+            "Share a moment when someone's kindness surprised you in a positive way.",
+            "If your life was a movie, what genre would it be, and who would play the lead role?",
+            "Describe a challenging experience that ultimately led to personal growth.",
+            "What's a small gesture that someone did for you that had a big impact on your life?",
+            "If you could have a dinner party with three people (dead or alive), who would you invite and why?",
+            "Share a goal or dream that you've never told anyone about until now.",
+            "Describe a place that holds special memories for you and why it's significant.",
+            "If you could give your younger self one piece of advice, what would it be?",
+            "If you could have dinner with anyone, living or historical, who would it be and why?",
+            "Do you have aspirations to be widely known? If so, in what way?",
+            "When you're about to make a significant decision, do you find yourself rehearsing what you'll say or do?",
+            "Describe your idea of a perfect day.",
+            "When was the last time you sang, either to yourself or someone else?",
+            "If you could choose between staying mentally sharp or physically fit in your later years, which would you choose?",
+            "Do you have a feeling or belief about your future that you consider a secret hunch?",
+            "What is your most treasured memory and why?",
+            "If you could change one thing about the world, what would it be?",
+            "Is there a dream or goal you've had for a long time? Why haven't you pursued it?",
+            "What does a perfect day look like in your ideal world?",
+            "If you could possess any skill or talent instantly, what would it be?",
+            "What's a personal accomplishment you're proud of?",
+            "If you could live in any era of history, which one would you choose and why?",
+            "What values are most important to you in a relationship?",
+            "If you could have a conversation with your younger self, what advice would you give?",
+            "What is the most significant life lesson you've learned so far?",
+            "If you had to pinpoint the turning point in your life, what would it be?",
+            "How do you define success, and do you consider yourself successful?",
+            "Is there a specific fear or insecurity that has had a significant impact on your life?",
+            "What do you believe is the purpose or meaning of life?",
+            "In what ways do you strive to make a positive impact on the world?",
+            "How do you handle failure or setbacks in your life?",
+            "Are there any habits or beliefs you've had to let go of to become the person you are today?",
+            "What role does gratitude play in your daily life?",
+            "How do you navigate and cope with difficult emotions or challenges?",
+            "If you could change one thing about yourself, what would it be and why?",
+            "How do you define happiness, and what does it look like in your life?",
+            "Is there a moment in your past that you wish you could relive? What would you do differently?",
+            "What are your biggest dreams and aspirations? Have you taken steps toward them?",
+            "How do you approach and overcome self-doubt?",
+            "In what ways have your priorities or values shifted over the years?",
+            "What is your philosophy on forgiveness and second chances?",
+            "If you could have a deep conversation with anyone, living or dead, who would it be and why?",
+            "How do you nurture and maintain your mental and emotional well-being?",
+            "Is there a specific belief or mindset that you hold dear, and why is it important to you?",
+            "If you could live in any era of history, when would it be and why?",
+            "What is your most cherished childhood memory and why does it stand out?",
+            "How do you define love, and what does it mean to you?",
+            "If you could have dinner with any three people, living or dead, who would they be and why?",
+            "In what ways do you believe technology has impacted human connection and relationships?",
+            "What is your philosophy on the balance between individuality and community?",
+            "If you had to choose a single word to represent your life's theme, what would it be?",
+            "How do you handle disagreements or conflicts within relationships?",
+            "What does success look like in terms of your personal relationships?",
+            "If you could give advice to your younger self, what would it be?",
+            "If you could choose one superpower, but it came with a significant sacrifice, would you choose it?",
+            "What role do you believe destiny or fate plays in our lives?",
+            "If you could witness any historical event, what would it be and why?",
+            "How do you navigate moments of uncertainty or existential questioning?",
+            "What is the most valuable lesson you've learned from a challenging experience?",
+            "If you could have a conversation with your future self, what advice would you seek?",
+            "How do you define success, and do you think you've achieved it in certain aspects of your life?",
+            "What fictional character do you resonate with the most and why?",
+            "If you could visit any place in the world for inspiration, where would it be?",
+            "What legacy do you hope to leave behind for future generations?",
+            "If you could erase one mistake from your past, what would it be?",
+            "What qualities do you admire most in yourself?",
+            "How has your perception of love and relationships evolved over time?",
+            "If you could have a conversation with someone you've lost, what would you say?",
+            "What's a dream or goal you've had that you haven't shared with many people?",
+            "How do you handle failure and setbacks?",
+            "If you could change one thing about the world, what would it be?",
+            "What values are most important to you in a friendship?",
+            "How do you define personal growth, and what does it look like for you?",
+            "What's the most significant lesson you've learned from a past relationship?",
+            "If you could step into the shoes of someone else for a day, who would it be and why?",
+            "What's a book, movie, or piece of art that has profoundly impacted your life?",
+            "How do you cope with stress and challenging situations?",
+            "If you could create a holiday that represents you, what would it be about?",
+            "What do you think is the key to a lasting and fulfilling relationship?",
+            "How do you stay true to yourself in the face of societal expectations?",
+            "If you could choose any skill or talent to master instantly, what would it be?",
+            "What's a small, everyday moment that brings you joy?",
+            "What legacy do you want to leave behind in your personal and professional life?",
+            "What's a defining moment in your life that shaped who you are today?",
+            "If you could have a conversation with your future self, what advice would you ask for?",
+            "How do you define resilience, and can you share a time when you demonstrated it?",
+            "Is there a specific childhood memory that continues to influence your decisions?",
+            "If you could witness any natural phenomenon, like the Northern Lights or a solar eclipse, where would you choose to experience it?",
+            "What's a goal you've set for yourself that seemed unattainable at first, but you accomplished it?",
+            "How do you approach self-care, and what activities bring you a sense of inner peace?",
+            "If you had the power to make one positive change in the world, what would it be?",
+            "Describe a situation where you had to step out of your comfort zone and how it impacted you.",
+            "What's a lesson you learned from a difficult experience that you now value?",
+            "If you could choose any historical figure to have dinner with, who would it be and why?",
+            "What's a book, movie, or piece of art that has profoundly impacted your life?",
+            "How do you cope with stress and challenging situations?",
+            "If you could create a holiday that represents you, what would it be about?",
+            "What do you think is the key to a lasting and fulfilling relationship?",
+            "How do you stay true to yourself in the face of societal expectations?",
+            "If you could choose any skill or talent to master instantly, what would it be?",
+            "What's a small, everyday moment that brings you joy?",
+            "What legacy do you want to leave behind in your personal and professional life?"
+        ];
+
+
+        var usedQuestions = [];
+
+        function generateRandomQuestion() {
+            if (usedQuestions.length === questions.length) {
+                // Reset used questions if all have been used
+                usedQuestions = [];
+            }
+
+            var remainingQuestions = questions.filter(q => !usedQuestions.includes(q));
+
+            var randomIndex = Math.floor(Math.random() * remainingQuestions.length);
+            var randomQuestion = remainingQuestions[randomIndex];
+
+            // Set a threshold for the length of the question
+            var maxLength = 30;
+
+            // Check if the length of the question exceeds the threshold
+            if (randomQuestion.length > maxLength) {
+                // Break the question into lines without cutting words
+                var words = randomQuestion.split(' ');
+                var lines = [];
+                var currentLine = '';
+
+                for (var i = 0; i < words.length; i++) {
+                    var word = words[i];
+                    if ((currentLine + word).length <= maxLength) {
+                        currentLine += (currentLine === '' ? '' : ' ') + word;
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    }
+                }
+
+                // Add the last line
+                lines.push(currentLine);
+
+                // Join the lines with <br> tag
+                randomQuestion = lines.join("<br>");
+            }
+
+            document.getElementById("question").innerHTML = randomQuestion;
+            usedQuestions.push(randomQuestion);
+        }
+    </script>
+
+
+
+</body>
+
+</html>
